@@ -19,6 +19,9 @@ public class BankDetails {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
+	@Column(name= "username")
+	private String username;
+	
 	@Column(name = "ifsc")
 	private String ifsc;
 	
@@ -42,6 +45,14 @@ public class BankDetails {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getIfsc() {

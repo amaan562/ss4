@@ -3,6 +3,7 @@ package com.thecodeveal.app.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,13 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.thecodeveal.app.model.BankDetails;
 import com.thecodeveal.app.service.BankDetailsService;
 
+@CrossOrigin(origins="*")
 @RestController
 public class BankDetailsController {
 
 	@Autowired
 	private BankDetailsService bankDetailsService;
 	
-	 @PostMapping("/bankDetails/{id}")
+	 @PostMapping("/bankDetails")
     public BankDetails saveBankDetails(@RequestBody BankDetails res){
         System.out.println("RES"+res);
         return bankDetailsService.saveBankDetails(res);
@@ -29,16 +31,16 @@ public class BankDetailsController {
 	public List<BankDetails> getBankDetail() {
 		return bankDetailsService.getBankDetails();
 	}
-    @GetMapping("/bankDetails/{id}")
-    public BankDetails getBankDetails(@PathVariable("id") long id){
-        return bankDetailsService.getBankDetailsById(id);
+    @GetMapping("/bankDetails/{username}")
+    public BankDetails getBankDetails(@PathVariable("username") String username){
+        return bankDetailsService.getBankDetails(username);
     }
-    @DeleteMapping("/bankDetails/{id}")
-    public String delResById(@PathVariable("id") long id){
-        return bankDetailsService.deleteBankDetails(id);
+    @DeleteMapping("/bankDetails/{username}")
+    public String delResById(@PathVariable("username") String username){
+        return bankDetailsService.deleteBankDetails(username);
     }
-   @PutMapping("/bankDetails/{id}")
-    public String updateRes(@PathVariable("id") long id,@RequestBody BankDetails resupdate){
-        return bankDetailsService.updateBankDetails(id,resupdate);
+   @PutMapping("/bankDetails/{username}")
+    public String updateRes(@PathVariable("username") String username,@RequestBody BankDetails resupdate){
+        return bankDetailsService.updateBankDetails(username,resupdate);
     }
 }
