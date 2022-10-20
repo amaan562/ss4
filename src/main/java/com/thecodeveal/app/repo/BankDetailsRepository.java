@@ -11,6 +11,6 @@ import com.thecodeveal.app.model.BankDetails;
 public interface BankDetailsRepository extends JpaRepository<BankDetails, Long> {
 
 	BankDetails findByUsername(String username);
-	String deleteByUsername(String username);
+	List<BankDetails> deleteByUsername(String username);
 	List<BankDetails> findAll();
 }

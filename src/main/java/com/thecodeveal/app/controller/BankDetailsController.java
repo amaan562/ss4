@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.thecodeveal.app.model.BankDetails;
 import com.thecodeveal.app.service.BankDetailsService;
 
-@CrossOrigin(origins="*")
 @RestController
+@CrossOrigin(origins = "*")
 public class BankDetailsController {
 
 	@Autowired
@@ -35,8 +35,9 @@ public class BankDetailsController {
     public BankDetails getBankDetails(@PathVariable("username") String username){
         return bankDetailsService.getBankDetails(username);
     }
+    
     @DeleteMapping("/bankDetails/{username}")
-    public String delResById(@PathVariable("username") String username){
+    public List<BankDetails> delResById(@PathVariable("username") String username){
         return bankDetailsService.deleteBankDetails(username);
     }
    @PutMapping("/bankDetails/{username}")

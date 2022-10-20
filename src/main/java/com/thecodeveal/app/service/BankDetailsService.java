@@ -2,6 +2,8 @@ package com.thecodeveal.app.service;
 
 import java.util.*;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -27,9 +29,9 @@ public class BankDetailsService {
 		return bankDetailsRepository.findByUsername(username);
 	}
 	
-	public String deleteBankDetails(String username){
-        bankDetailsRepository.deleteByUsername(username);
-        return "resource removed of username "+username;
+	@Transactional
+	public List<BankDetails> deleteBankDetails(String username){
+        return bankDetailsRepository.deleteByUsername(username);
     }
 	
 	public String updateBankDetails(String username, BankDetails res) {
@@ -37,6 +39,7 @@ public class BankDetailsService {
 		if(existingRes==null){
             return "Data Not Found";
         }
+		existingRes.setUsername(username);
 		existingRes.setAccountNumber(res.getAccountNumber());
 		existingRes.setFirstEmployment(res.isFirstEmployment());
 		existingRes.setIfsc(res.getIfsc());
