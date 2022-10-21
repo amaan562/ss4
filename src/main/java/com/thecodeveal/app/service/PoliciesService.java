@@ -38,10 +38,9 @@ public class PoliciesService {
 		if(existingPolicies==null){
             return "Data Not Found";
         }
-		existingPolicies.setUsername(username);
-		existingPolicies.setHr(policies.getHr());
-		existingPolicies.setIt(policies.getIt());
-		existingPolicies.setNda(policies.getNda());
+		if(policies.getHr()!=null)	existingPolicies.setHr(policies.getHr());
+		if(policies.getIt()!=null)	existingPolicies.setIt(policies.getIt());
+		if(policies.getNda()!=null)	existingPolicies.setNda(policies.getNda());
 		
 		policiesRepository.save(existingPolicies);
 		return "Data updated successfully";
