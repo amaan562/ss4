@@ -57,6 +57,35 @@ public class User implements UserDetails{
 	private String mothermobilenumber;
 	private String addressone;
 	private String addresstwo;
+	
+	private boolean hrPolicy;
+	private boolean itPolicy;
+	private boolean ndaPolicy;
+	
+	public boolean isHrPolicy() {
+		return hrPolicy;
+	}
+
+	public void setHrPolicy(boolean hrPolicy) {
+		this.hrPolicy = hrPolicy;
+	}
+
+	public boolean isItPolicy() {
+		return itPolicy;
+	}
+
+	public void setItPolicy(boolean itPolicy) {
+		this.itPolicy = itPolicy;
+	}
+
+	public boolean isNdaPolicy() {
+		return ndaPolicy;
+	}
+
+	public void setNdaPolicy(boolean ndaPolicy) {
+		this.ndaPolicy = ndaPolicy;
+	}
+
 	public String getMobilenumber() {
 		return mobilenumber;
 	}

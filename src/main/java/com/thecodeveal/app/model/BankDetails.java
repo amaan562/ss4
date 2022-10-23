@@ -34,10 +34,12 @@ public class BankDetails {
 	@Column(name = "firstEmployment")
 	private boolean firstEmployment;
 	
-//	@ManyToMany(cascade = CascadeType.MERGE,fetch=FetchType.EAGER)
-//	@JoinTable(name="AUTH_USER_DETAILS",
-//			   joinColumns = @JoinColumn(referencedColumnName = "id"),
-//			   inverseJoinColumns = @JoinColumn(referencedColumnName = "id"))
+	@ManyToMany(cascade = CascadeType.MERGE,fetch=FetchType.LAZY
+			
+			)
+	@JoinTable(name="AUTH_USER_DETAILS",
+			   joinColumns = @JoinColumn(referencedColumnName = "id"),
+			   inverseJoinColumns = @JoinColumn(referencedColumnName = "id"))
 
 	public long getId() {
 		return id;
